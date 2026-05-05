@@ -106,7 +106,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--brc-dark);
+      background: var(--brc-white);
+      border-bottom: 1px solid #E8E9EA;
       padding: 16px 0;
     }
 
@@ -120,32 +121,26 @@
 
     .header-contact {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 2px;
-    }
-
-    .header-contact-item {
-      display: flex;
       align-items: center;
-      gap: 8px;
-      color: var(--brc-white);
-      font-size: 14px;
-      font-weight: 400;
+      gap: 24px;
     }
 
-    .header-contact-item .label {
-      color: var(--brc-muted);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .header-contact-item a {
-      color: var(--brc-white);
+    .header-contact a {
+      color: var(--brc-dark);
       font-weight: 600;
       font-size: 16px;
+    }
+
+    .header-contact .sms-link {
+      background: var(--brc-green);
+      color: var(--brc-white);
+      padding: 10px 20px;
+      font-size: 15px;
+    }
+
+    .header-contact .sms-link:hover {
+      background: var(--brc-green-hover);
+      text-decoration: none;
     }
 
     /* ── SECTION 2: Hero ── */
@@ -518,6 +513,7 @@
       .hero-ctas { flex-direction: column; }
       .footer-grid { grid-template-columns: 1fr; }
       .gallery-strip img { height: 200px; min-width: 240px; }
+      .header-contact .sms-link { display: none; }
     }
   </style>
 </head>
@@ -532,18 +528,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="site-header">
   <div class="container">
     <div class="header-inner">
-      <a href="#" class="header-logo">
+      <a href="/" class="header-logo">
         <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/white-logo-new.svg" alt="Ballarat Roadworthy Centre" width="180" height="52">
       </a>
       <div class="header-contact">
-        <div class="header-contact-item">
-          <span class="label">Call us at</span>
-          <a href="tel:+61353358920">03 5335 8920</a>
-        </div>
-        <div class="header-contact-item">
-          <span class="label">Text us at</span>
-          <a href="sms:0488825361">0488 825 361</a>
-        </div>
+        <a href="tel:+61353358920">03 5335 8920</a>
+        <a href="sms:0488825361" class="sms-link">SMS Us</a>
       </div>
     </div>
   </div>
