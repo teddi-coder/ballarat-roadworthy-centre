@@ -36,13 +36,28 @@ h3 { font-size: 24px; font-weight: 600; letter-spacing: -1.3px; color: var(--brc
 .btn:hover { background: var(--brc-green-hover); text-decoration: none; color: var(--brc-white); }
 .btn-full { width: 100%; text-align: center; display: block; }
 .btn-pill { border-radius: 999px; padding: 10px 22px; font-size: 15px; }
+/* CTA utility classes */
+.btn-call { background: #2e7d32; color: #fff; }
+.btn-call:hover { background: var(--brc-green-hover); color: #fff; }
+.btn-quote { background: #fff; color: #2e7d32; border: 2px solid #2e7d32; }
+.btn-quote:hover { background: #2e7d32; color: #fff; }
+.btn-dark { background: #1c1c1e; color: #fff; }
+.btn-dark:hover { background: #000; color: #fff; }
+.btn-secondary { background: transparent; color: var(--brc-green); border: 2px solid var(--brc-green); }
+.btn-secondary:hover { background: var(--brc-green); color: #fff; }
+.section-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-top: 32px; }
 
 /* HEADER */
+/* header background: test #ffffff vs var(--color-brand-green) */
 header { position: sticky; top: 0; z-index: 100; background: var(--brc-dark); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.header-logo { display: flex; align-items: center; flex-shrink: 0; }
 .header-logo img { height: 48px; width: auto; }
-.header-phone { color: var(--brc-white); font-weight: 500; font-size: 16px; text-decoration: none; }
-.header-phone:hover { color: var(--brc-green); text-decoration: none; }
+.logo-text { color: var(--brc-white); font-weight: 700; font-size: 17px; letter-spacing: -0.5px; }
+.header-nav { display: flex; align-items: center; gap: 24px; flex: 1; justify-content: center; }
+.header-nav a { color: var(--brc-white); font-size: 14px; font-weight: 500; text-decoration: none; white-space: nowrap; }
+.header-nav a:hover { color: var(--brc-green); text-decoration: none; }
+.header-ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 
 /* HERO */
 .hero { background: var(--brc-dark); padding: 80px 24px; }
@@ -55,6 +70,7 @@ header { position: sticky; top: 0; z-index: 100; background: var(--brc-dark); bo
 .hero-ctas { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
 .hero-secondary { color: var(--brc-white); font-size: 15px; }
 .hero-secondary a { color: var(--brc-green); }
+.trust-badge { display: inline-block; background: rgba(255,255,255,0.1); color: var(--brc-white); font-size: 15px; font-weight: 600; padding: 10px 18px; border-radius: 4px; margin-top: 20px; }
 
 /* FORM CARD */
 .form-card { background: #ffffff; border-radius: 12px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.18); }
@@ -64,6 +80,7 @@ header { position: sticky; top: 0; z-index: 100; background: var(--brc-dark); bo
 .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; font-family: var(--font-main); font-size: 15px; border: 1px solid #D0D5D8; border-radius: 0; color: var(--brc-body); background: #fff; -webkit-appearance: none; appearance: none; }
 .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2345955E' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: 2px solid var(--brc-green); }
+.form-row-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
 
 /* SERVICES */
 .services { background: var(--brc-light); padding: 80px 24px; }
@@ -71,7 +88,7 @@ header { position: sticky; top: 0; z-index: 100; background: var(--brc-dark); bo
 .section-header { margin-bottom: 48px; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
 .service-card { background: var(--brc-white); border-radius: 8px; overflow: hidden; }
-.service-card img { width: 100%; height: 180px; object-fit: cover; }
+.service-card img { width: 100%; height: 220px; object-fit: cover; }
 .service-card-body { padding: 20px; }
 .service-card-body h3 { margin-bottom: 8px; font-size: 20px; }
 .service-card-body p { font-size: 15px; color: var(--brc-body); margin-bottom: 12px; line-height: 1.6; }
@@ -85,6 +102,7 @@ header { position: sticky; top: 0; z-index: 100; background: var(--brc-dark); bo
 .review-quote { font-style: italic; font-size: 16px; color: var(--brc-body); margin-bottom: 16px; line-height: 1.7; }
 .review-name { font-weight: 700; font-size: 14px; color: var(--brc-dark); }
 .review-source { font-size: 12px; color: var(--brc-muted); margin-top: 4px; }
+.stars { color: #f5a623; }
 
 /* STATS + ACCREDITATION */
 .stats-bar { background: var(--brc-dark); padding: 60px 24px; }
@@ -98,8 +116,8 @@ header { position: sticky; top: 0; z-index: 100; background: var(--brc-dark); bo
 .how-it-works { background: var(--brc-white); padding: 80px 24px; text-align: center; }
 .how-it-works-inner { max-width: 1100px; margin: 0 auto; }
 .how-it-works h2 { margin-bottom: 48px; }
-.steps-row { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: start; margin-bottom: 48px; }
-.step { text-align: center; padding: 0 16px; }
+.steps-row { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: start; margin-bottom: 48px; gap: 2rem; }
+.step { text-align: center; padding: 2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.12); border-radius: 8px; margin: 0 0.5rem; }
 .step-number { font-size: 64px; font-weight: 700; color: var(--brc-green); line-height: 1; margin-bottom: 12px; }
 .step h3 { margin-bottom: 10px; font-size: 20px; }
 .step p { font-size: 15px; color: var(--brc-body); line-height: 1.7; }
@@ -153,6 +171,7 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
 .footer-col h4 { color: var(--brc-white); font-size: 16px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
 .footer-logo { margin-bottom: 16px; }
 .footer-logo img { height: 40px; }
+.logo-text-footer { color: var(--brc-white); font-weight: 700; font-size: 16px; letter-spacing: -0.5px; }
 .footer-blurb { color: var(--brc-muted); font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
 .footer-socials { display: flex; gap: 12px; }
 .footer-socials a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.1); color: var(--brc-white); font-size: 14px; text-decoration: none; font-weight: 600; transition: background 0.2s; }
@@ -181,13 +200,16 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
   .map-inner { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; text-align: center; }
+  .header-nav { display: none; }
+}
+@media (max-width: 768px) {
+  .reviews-grid { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row-top { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   .services-grid { grid-template-columns: 1fr; }
-  .header-phone { display: none; }
+  .header-ctas .btn-call { display: none; }
   .hero { padding: 48px 20px; }
-  .reviews-grid { overflow-x: auto; display: flex; flex-wrap: nowrap; gap: 16px; }
-  .review-card { min-width: 280px; }
 }
 </style>
 <script>var $wc_load=function(a){return JSON.parse(JSON.stringify(a))},$wc_leads=$wc_leads||{doc:{url:$wc_load(document.URL),ref:$wc_load(document.referrer),search:$wc_load(location.search),hash:$wc_load(location.hash)}};</script>
@@ -200,11 +222,25 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
 <!-- HEADER -->
 <header>
   <div class="header-inner">
+    <!-- Left: logo -->
     <a href="/" class="header-logo">
-      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/white-logo-new.svg" alt="Ballarat Roadworthy Centre" width="180" height="48">
+      <!-- TODO: replace with logo file when available -->
+      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/white-logo-new.svg" alt="Ballarat Roadworthy Centre" width="180" height="48" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';">
+      <span class="logo-text" style="display:none;">BRC AUTOMOTIVE CENTRE</span>
     </a>
-    <a href="tel:+61353358920" class="header-phone">03 5335 8920</a>
-    <a href="#form" class="btn btn-pill">Get a Free Quote</a>
+    <!-- Centre: nav links -->
+    <nav class="header-nav">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#faqs">FAQ</a>
+      <a href="#form">Contact</a>
+    </nav>
+    <!-- Right: two CTAs -->
+    <div class="header-ctas">
+      <a href="tel:+61353358920" class="btn btn-pill btn-call">Call Us Today – 03 5335 8920</a>
+      <a href="#form" class="btn btn-pill btn-quote">Get Free Quote</a>
+    </div>
   </div>
 </header>
 
@@ -223,6 +259,7 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
         <a href="#form" class="btn">Get a Free Quote</a>
         <span class="hero-secondary">Call us: <a href="tel:+61353358920">03 5335 8920</a></span>
       </div>
+      <div class="trust-badge"><span>&#11088; 4.45 Stars from 242 Reviews</span></div>
     </div>
     <div class="hero-right">
       <div class="form-card">
@@ -256,7 +293,7 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
 </section>
 
 <!-- SERVICES / VEHICLE TYPES -->
-<section class="services">
+<section class="services" id="services">
   <div class="services-inner">
     <div class="section-header">
       <h2>Inspections for vehicles big and small</h2>
@@ -295,7 +332,7 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
         </div>
       </div>
       <div class="service-card">
-        <img src="https://placehold.co/400x180/2a2a2a/ffffff?text=Motor+Homes" alt="Motorhome roadworthy" loading="lazy">
+        <img src="https://placehold.co/400x220/2e7d32/ffffff?text=Van+Service" alt="Van service Ballarat" loading="lazy">
         <div class="service-card-body">
           <h3>Motor Homes</h3>
           <p>VACC-accredited motorhome roadworthy inspections for campervans and RVs.</p>
@@ -303,17 +340,18 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
         </div>
       </div>
     </div>
-    <div style="text-align:center;">
-      <a href="#form" class="btn">Book Now</a>
+    <div class="section-ctas">
+      <a href="tel:+61353358920" class="btn btn-call">Call Us Today</a>
+      <a href="#form" class="btn btn-quote">Book Now</a>
     </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section class="reviews">
+<!-- WHY BALLARAT LOCALS CHOOSE US -->
+<section class="reviews" id="why-us">
   <div class="reviews-inner">
-    <h2>Why Ballarat Locals Trust Us</h2>
-    <div class="reviews-grid">
+    <h2>Why Ballarat Locals Choose Us</h2>
+    <div class="reviews-grid" id="reviews">
       <div class="review-card">
         <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p class="review-quote">"We have been using the Ballarat Roadworthy Centre for all of our vehicles for many years. James and the team are true professionals, who are honest, reliable and get the job done."</p>
@@ -332,6 +370,27 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
         <p class="review-name">Sarah T.</p>
         <p class="review-source">Google Review</p>
       </div>
+      <!-- TODO: replace with real review content -->
+      <div class="review-card">
+        <p>"Great service, honest pricing and had my car done same day. Highly recommend!"</p>
+        <span>— Sarah M., Google Review</span>
+        <span class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      </div>
+      <div class="review-card">
+        <p>"Fast, friendly and fair. They explained everything clearly and didn't try to upsell. Five stars."</p>
+        <span>— David K., Google Review</span>
+        <span class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      </div>
+      <div class="review-card">
+        <p>"Booked online and they had my roadworthy done by lunchtime. Couldn't ask for better."</p>
+        <span>— Tanya R., Google Review</span>
+        <span class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</span>
+      </div>
+    </div>
+    <div class="section-ctas">
+      <a href="#" target="_blank" rel="noopener" class="btn btn-secondary">Read More Reviews</a><!-- TODO: replace # with Google Reviews URL -->
+      <a href="tel:+61353358920" class="btn btn-call">Call Us Today</a>
+      <a href="#form" class="btn btn-quote">Get a Free Estimate</a>
     </div>
   </div>
 </section>
@@ -377,11 +436,15 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
         <p>Your vehicle is certified, with everything explained in plain English. No jargon, just clear updates.</p>
       </div>
     </div>
-    <a href="#form" class="btn">Book Now</a>
+    <!-- section bg is white -->
+    <div class="section-ctas">
+      <a href="tel:+61353358920" class="btn btn-call">Call Us Today</a>
+      <a href="#form" class="btn btn-dark">Book Now</a>
+    </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT / 20+ YEARS OF SERVICE -->
 <section class="about">
   <div class="about-inner">
     <div class="about-text">
@@ -389,20 +452,21 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
       <p>Your car or truck keeps your life moving, and when something goes wrong, you need someone who will treat it like their own. We don't upsell, delay or cut corners — we diagnose the problem correctly, explain your options clearly, and get to work with quality parts and skilled workmanship. It's why so many Ballarat locals come back and send their mates too.</p>
     </div>
     <div class="about-image">
-      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/testimonials.png" alt="Ballarat Roadworthy Centre workshop" loading="lazy" style="border-radius:8px;">
+      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/testimonials.png" alt="Ballarat Roadworthy Centre workshop" loading="lazy" style="border-radius:8px;" onerror="this.src='https://placehold.co/600x400/18191B/ffffff?text=BRC+Workshop';">
     </div>
   </div>
 </section>
 
+<!-- VEHICLE BRANDS / SAFETY IS OUR NUMBER ONE PRIORITY -->
 <section style="background:#F2F2F3;padding:60px 24px;">
   <div style="max-width:1200px;margin:0 auto;text-align:center;">
     <h2 style="margin-bottom:40px;font-size:32px;">Safety is Our Number One Priority</h2>
     <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;align-items:center;">
-      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/fiat.webp" alt="Fiat" loading="lazy" style="height:48px;width:auto;object-fit:contain;filter:grayscale(1);opacity:0.6;">
-      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/renault.webp" alt="Renault" loading="lazy" style="height:48px;width:auto;object-fit:contain;filter:grayscale(1);opacity:0.6;">
-      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/mitsubishi.webp" alt="Mitsubishi" loading="lazy" style="height:48px;width:auto;object-fit:contain;filter:grayscale(1);opacity:0.6;">
-      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/iveco.webp" alt="Iveco" loading="lazy" style="height:48px;width:auto;object-fit:contain;filter:grayscale(1);opacity:0.6;">
-      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/hiace.webp" alt="HiAce" loading="lazy" style="height:48px;width:auto;object-fit:contain;filter:grayscale(1);opacity:0.6;">
+      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/fiat.webp" alt="Fiat" loading="lazy" style="height:48px;width:auto;object-fit:contain;filter:grayscale(1);opacity:0.6;" onerror="this.src='https://placehold.co/120x48/cccccc/666666?text=Fiat';">
+      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/renault.webp" alt="Renault" loading="lazy" style="height:48px;width:auto;object-fit:contain;filter:grayscale(1);opacity:0.6;" onerror="this.src='https://placehold.co/120x48/cccccc/666666?text=Renault';">
+      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/mitsubishi.webp" alt="Mitsubishi" loading="lazy" style="height:48px;width:auto;object-fit:contain;filter:grayscale(1);opacity:0.6;" onerror="this.src='https://placehold.co/120x48/cccccc/666666?text=Mitsubishi';">
+      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/iveco.webp" alt="Iveco" loading="lazy" style="height:48px;width:auto;object-fit:contain;filter:grayscale(1);opacity:0.6;" onerror="this.src='https://placehold.co/120x48/cccccc/666666?text=Iveco';">
+      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/hiace.webp" alt="HiAce" loading="lazy" style="height:48px;width:auto;object-fit:contain;filter:grayscale(1);opacity:0.6;" onerror="this.src='https://placehold.co/120x48/cccccc/666666?text=HiAce';">
     </div>
   </div>
 </section>
@@ -412,11 +476,11 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
   <div class="gallery-inner">
     <h2>Over 1,000 Cars Certified</h2>
     <div class="gallery-strip">
-      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/image-290.webp" alt="Ballarat Roadworthy Centre" loading="lazy">
-      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/image-291.webp" alt="Ballarat Roadworthy Centre" loading="lazy">
-      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/image-292.webp" alt="Ballarat Roadworthy Centre" loading="lazy">
-      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/image-293.webp" alt="Ballarat Roadworthy Centre" loading="lazy">
-      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/image-294.webp" alt="Ballarat Roadworthy Centre" loading="lazy">
+      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/image-290.webp" alt="Ballarat Roadworthy Centre" loading="lazy" onerror="this.src='https://placehold.co/300x240/18191B/ffffff?text=BRC';">
+      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/image-291.webp" alt="Ballarat Roadworthy Centre" loading="lazy" onerror="this.src='https://placehold.co/300x240/18191B/ffffff?text=BRC';">
+      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/image-292.webp" alt="Ballarat Roadworthy Centre" loading="lazy" onerror="this.src='https://placehold.co/300x240/18191B/ffffff?text=BRC';">
+      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/image-293.webp" alt="Ballarat Roadworthy Centre" loading="lazy" onerror="this.src='https://placehold.co/300x240/18191B/ffffff?text=BRC';">
+      <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/image-294.webp" alt="Ballarat Roadworthy Centre" loading="lazy" onerror="this.src='https://placehold.co/300x240/18191B/ffffff?text=BRC';">
     </div>
     <div style="text-align:center;">
       <a href="#form" class="btn">Get a Free Estimate</a>
@@ -441,7 +505,7 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
   </div>
 </section>
 
-<!-- SECOND FORM -->
+<!-- SECOND FORM / CONTACT -->
 <section class="second-form" id="form">
   <div class="second-form-inner">
     <h2>Book Ballarat's #1 Roadworthy Centre Today</h2>
@@ -453,17 +517,19 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
     </ul>
     <!-- TODO: replace action with form handler — contact@ballaratroadworthy.com -->
     <form action="#" method="POST">
-      <div class="form-group">
-        <label for="f-name">Your Name</label>
-        <input type="text" id="f-name" name="name" placeholder="John Smith" required>
-      </div>
-      <div class="form-group">
-        <label for="f-phone">Phone Number</label>
-        <input type="tel" id="f-phone" name="phone" placeholder="0400 000 000" required>
-      </div>
-      <div class="form-group">
-        <label for="f-email">Email Address</label>
-        <input type="email" id="f-email" name="email" placeholder="john@example.com">
+      <div class="form-row-top">
+        <div class="form-group">
+          <label for="f-name">Your Name</label>
+          <input type="text" id="f-name" name="name" placeholder="John Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="f-phone">Phone Number</label>
+          <input type="tel" id="f-phone" name="phone" placeholder="0400 000 000" required>
+        </div>
+        <div class="form-group">
+          <label for="f-email">Email Address</label>
+          <input type="email" id="f-email" name="email" placeholder="john@example.com">
+        </div>
       </div>
       <div class="form-group">
         <label for="f-service">Service Required</label>
@@ -486,7 +552,7 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
 </section>
 
 <!-- FAQS -->
-<section class="faqs">
+<section class="faqs" id="faqs">
   <div class="faqs-inner">
     <h2>Frequently Asked Questions</h2>
     <div class="faq-item">
@@ -501,6 +567,22 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
       <button class="faq-question" aria-expanded="false">Do I need to book, or can I walk in?</button>
       <div class="faq-answer"><div class="faq-answer-inner">Bookings are recommended to minimise wait times, but we'll always try to help if you're stuck. Call us on <a href="tel:+61353358920">03 5335 8920</a> or use the form above to request a time that works for you.</div></div>
     </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Do you offer roadworthy certificates (RWC)?</button>
+      <div class="faq-answer"><div class="faq-answer-inner">Yes, we're a licensed roadworthy inspection station. We can issue VIC RWC certificates for passenger vehicles, light trucks, motorhomes and more.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Do you work on all vehicle types?</button>
+      <div class="faq-answer"><div class="faq-answer-inner">We service most passenger vehicles, 4WDs, and vans. We also handle heavy vehicles including trucks, buses, motorhomes and commercial fleets.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">How long does a standard service take?</button>
+      <div class="faq-answer"><div class="faq-answer-inner">Most services are completed within 2–3 hours. Roadworthy inspections are usually quicker. We'll give you an accurate timeframe when you book.</div></div>
+    </div>
+    <div class="section-ctas">
+      <a href="tel:+61353358920" class="btn btn-call">Call Us Today</a>
+      <a href="#form" class="btn btn-quote">Get a Free Estimate</a>
+    </div>
   </div>
 </section>
 
@@ -509,7 +591,9 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
   <div class="footer-inner">
     <div class="footer-col">
       <div class="footer-logo">
-        <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/white-logo-new.svg" alt="Ballarat Roadworthy Centre" height="40">
+        <!-- TODO: replace with logo file when available -->
+        <img src="https://service.ballaratroadworthy.com/wp-content/uploads/2024/10/white-logo-new.svg" alt="Ballarat Roadworthy Centre" height="40" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';">
+        <span class="logo-text-footer" style="display:none;">BRC AUTOMOTIVE CENTRE</span>
       </div>
       <p class="footer-blurb">At Ballarat Roadworthy Centre, whether you're driving a car, truck, bus, or motorhome, you can trust that your vehicle will be road-ready. From inspections to servicing and repairs, your vehicle gets the attention it needs to keep you safe on the road.</p>
       <div class="footer-socials">
