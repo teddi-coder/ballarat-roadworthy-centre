@@ -212,6 +212,8 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
   .header-ctas .btn-call { display: none; }
   .hero { padding: 48px 20px; }
 }
+.form-success{background:#e8f5e9;border:1px solid #4caf50;color:#2e7d32;padding:16px 20px;border-radius:6px;font-size:16px;text-align:center;margin:0}
+.form-error{color:#c0392b;font-size:14px;margin-top:8px}
 </style>
 <script>var $wc_load=function(a){return JSON.parse(JSON.stringify(a))},$wc_leads=$wc_leads||{doc:{url:$wc_load(document.URL),ref:$wc_load(document.referrer),search:$wc_load(location.search),hash:$wc_load(location.hash)}};</script>
 <script src="//s.ksrndkehqnwntyxlhgto.com/136484.js"></script>
@@ -267,6 +269,7 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
         <h3>Get a Free Quote</h3>
         <!-- TODO: replace action with form handler — contact@ballaratroadworthy.com -->
         <form action="#" method="POST">
+          <input type="hidden" name="site" value="brc">
           <div class="form-group">
             <label for="h-name">Your Name</label>
             <input type="text" id="h-name" name="name" placeholder="John Smith" required>
@@ -518,6 +521,7 @@ footer { background: var(--brc-dark); padding: 64px 24px 0; }
     </ul>
     <!-- TODO: replace action with form handler — contact@ballaratroadworthy.com -->
     <form action="#" method="POST">
+      <input type="hidden" name="site" value="brc">
       <div class="form-row-top">
         <div class="form-group">
           <label for="f-name">Your Name</label>
@@ -638,6 +642,38 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     answer.style.maxHeight = isOpen ? '0' : answer.scrollHeight + 'px';
   });
 });
+</script>
+<script>
+(function(){
+  // TODO: replace WORKER_URL after running: wrangler deploy
+  var WORKER='https://ballarat-form-handler.YOUR_ACCOUNT.workers.dev/submit';
+  document.querySelectorAll('form').forEach(function(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var btn=form.querySelector('[type="submit"]');
+      var orig=btn.textContent;
+      btn.disabled=true;
+      btn.textContent='Sending…';
+      fetch(WORKER,{
+        method:'POST',
+        headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body:new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(function(r){return r.json();})
+      .then(function(j){
+        if(j.success){
+          form.innerHTML='<p class="form-success">Thanks! We\'ll be in touch shortly.</p>';
+        } else { throw new Error(j.error||'error'); }
+      })
+      .catch(function(){
+        btn.disabled=false;btn.textContent=orig;
+        var err=form.querySelector('.form-error');
+        if(!err){err=document.createElement('p');err.className='form-error';form.appendChild(err);}
+        err.textContent='Something went wrong. Please call us directly.';
+      });
+    });
+  });
+})();
 </script>
 </body>
 </html>
