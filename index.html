@@ -635,10 +635,15 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (function(){
-  // TODO: replace WORKER_URL after running: wrangler deploy
-  var WORKER='https://ballarat-form-handler.YOUR_ACCOUNT.workers.dev/submit';
+  var SUPABASE_URL      = 'https://prqbvbhuwfpdkkrkqizj.supabase.co';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBycWJ2Ymh1d2ZwZGtrcmtxaXpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5OTA1MzQsImV4cCI6MjA5MjU2NjUzNH0.Io5IHsyp23yThoyZD7Ccs4UygTtwx_0rIRTlnS3pYZQ';
+
+  function getParam(k){ return new URLSearchParams(window.location.search).get(k)||null; }
+  function fval(form,id){ var el=form.querySelector('#'+id); return el?(el.value.trim()||null):null; }
+
   document.querySelectorAll('form').forEach(function(form){
     form.addEventListener('submit',function(e){
       e.preventDefault();
@@ -646,23 +651,38 @@ document.querySelectorAll('.faq-question').forEach(btn => {
       var orig=btn.textContent;
       btn.disabled=true;
       btn.textContent='Sending…';
-      fetch(WORKER,{
-        method:'POST',
-        headers:{'Content-Type':'application/x-www-form-urlencoded'},
-        body:new URLSearchParams(new FormData(form)).toString()
-      })
-      .then(function(r){return r.json();})
-      .then(function(j){
-        if(j.success){
+
+      var pfx=form.querySelector('#h-name')?'h-':'f-';
+      var payload={
+        customer_name:  fval(form,pfx+'name')||'',
+        customer_phone: fval(form,pfx+'phone')||'',
+        customer_email: fval(form,pfx+'email'),
+        service_type:   fval(form,pfx+'service'),
+        notes:          fval(form,pfx+'message'),
+        utm_source:     getParam('utm_source'),
+        utm_medium:     getParam('utm_medium'),
+        utm_campaign:   getParam('utm_campaign'),
+        utm_content:    getParam('utm_content'),
+        utm_term:       getParam('utm_term'),
+        gclid:          getParam('gclid'),
+        landing_page:   window.location.pathname
+      };
+
+      supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
+        .from('brc_bookings').insert([payload])
+        .then(function(result){
+          if(result.error) throw result.error;
+          if(window.dataLayer) dataLayer.push({event:'form_submission',form_name:'booking_form',conversion_type:'booking_enquiry'});
+          if(typeof gtag==='function') gtag('event','generate_lead',{service_type:payload.service_type});
           form.innerHTML='<p class="form-success">Thanks! We\'ll be in touch shortly.</p>';
-        } else { throw new Error(j.error||'error'); }
-      })
-      .catch(function(){
-        btn.disabled=false;btn.textContent=orig;
-        var err=form.querySelector('.form-error');
-        if(!err){err=document.createElement('p');err.className='form-error';form.appendChild(err);}
-        err.textContent='Something went wrong. Please call us directly.';
-      });
+        })
+        .catch(function(err){
+          console.error('Booking error:',err);
+          btn.disabled=false;btn.textContent=orig;
+          var errEl=form.querySelector('.form-error');
+          if(!errEl){errEl=document.createElement('p');errEl.className='form-error';form.appendChild(errEl);}
+          errEl.textContent='Something went wrong. Please call us directly.';
+        });
     });
   });
 })();
