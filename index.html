@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="styles.css">
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M9MFCFM');</script>
 <script>var $wc_load=function(a){return JSON.parse(JSON.stringify(a))},$wc_leads=$wc_leads||{doc:{url:$wc_load(document.URL),ref:$wc_load(document.referrer),search:$wc_load(location.search),hash:$wc_load(location.hash)}};</script>
-<script src="//s.ksrndkehqnwntyxlhgto.com/136716.js"></script>
+<script src="//s.ksrndkehqnwntyxlhgto.com/136484.js"></script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9MFCFM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -71,6 +71,7 @@
     <div class="quote-card reveal">
       <h3>Request a quote</h3>
       <p>We'll get back to you fast.</p>
+      <form id="booking-form" novalidate>
       <div class="form-row-3">
         <div class="field"><label>Name</label><input type="text" placeholder="Jane Smith"></div>
         <div class="field"><label>Phone</label><input type="tel" placeholder="0400 000 000"></div>
@@ -80,8 +81,9 @@
         <select><option>Select a service…</option><option>Car roadworthy (RWC)</option><option>Truck roadworthy</option><option>Bus inspection</option><option>Fleet inspection</option><option>Pre-purchase inspection</option><option>Other</option></select>
       </div>
       <div class="field"><label>Notes</label><textarea rows="2" placeholder="Tell us about your vehicle…"></textarea></div>
-      <a href="#" class="btn btn-call">Send my request →</a>
+      <button type="submit" class="btn btn-call">Send my request →</button>
       <p class="form-reassure">No obligation. We'll only use your details to reply.</p>
+      </form>
     </div>
   </div>
 </section>
@@ -319,6 +321,29 @@ document.getElementById('revPrev').onclick=()=>track.scrollBy({left:-card(),beha
 // Reveal on scroll
 const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Booking form submit
+(function() {
+  'use strict';
+  var form = document.getElementById('booking-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // WhatConverts — fire immediately on submit, before anything else
+    try {
+      if (typeof window.wc_capture_form === 'function') {
+        window.wc_capture_form(form);
+      }
+    } catch (wcErr) {
+      console.warn('WhatConverts capture failed:', wcErr);
+    }
+
+    // Show success message
+    form.innerHTML = '<p style="padding:1rem 0;font-weight:600;">Thanks! We\'ll be in touch shortly.</p>';
+  });
+}());
 </script>
 </body>
 </html>
