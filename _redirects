@@ -1,0 +1,6 @@
+# Orphaned WordPress URLs → nearest static page
+/hello-world/ / 301
+/category/uncategorized/ / 301
+
+# Catch-all
+/* / 301
